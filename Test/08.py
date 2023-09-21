@@ -11,6 +11,11 @@ our team (x) got in the championship by the rules given above.
 """
 
 def points(games):
-    return sum([3 if i[0] > i[2] else 0 if i[0] < i[2] else 1 for i in games])
-
+    total = 0
+    for i in games:
+        if i[0] > i[2]:
+            total += 3
+        elif i[0] == i[2]:
+            total += 1
+    return total
 print(points(['3:1', '2:2', '0:1', '3:3', '1:0', '2:1', '3:0', '1:0', '0:1', '1:2']))

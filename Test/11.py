@@ -1,14 +1,15 @@
 # You are given an array(list) strarr of strings and an integer k. Your task is to return the first longest string consisting of k consecutive strings taken in the array.
 
-def longest_conec_k(list_str,k):
-    ans = []
-    for i in range(len(list_str)-k+1):
-        temp = ''.join(list_str[i:i+k])
-        ans.append(temp) 
-    return max(ans, key=len)
+
+def longest_consecutive_str(list_str,k):
+    ans = ""
+    for i  in range(len(list_str)):
+        if len("".join(list_str[i:i+k])) > len(ans):
+            ans = "".join(list_str[i:i+k])
+    return ans
 
 
 strarr = ["tree", "foling", "trashy", "blue", "abcdef", "uvwxyz"]
 k = 2
 
-print(longest_conec_k(strarr,k))
+print(longest_consecutive_str(strarr,k))

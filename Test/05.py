@@ -1,24 +1,25 @@
-def decode_matrix(rows, columns, encoded_matrix):
-    decoded_string = ""
+import re
 
-    for j in range(columns):
-        for i in range(rows):
-            if encoded_matrix[i][j].isalpha() or encoded_matrix[i][j] == ' ':
-                decoded_string += encoded_matrix[i][j]
+def decode(s):
+    result = ''
+    for i in range(len(s[0])):
+        for j in range(len(s)):
+            if re.match(r'[a-zA-Z ]', s[j][i]):
+                result += s[j][i]
+    return result
 
-    return decoded_string
+def main():
+    encoded_matrix = [
+        ['T', 's', 'i'],
+        ['h', '%', 'x'],
+        ['i', ' ', '#'],
+        ['s', 'M', ' '],
+        ['$', 'a', ' '],
+        ['#', 't', '%'],
+        ['i', 'r', '!']
+    ]
 
-# Example usage:
-rows = 7
-columns = 3
-encoded_matrix = [
-    ['T', 's', 'i'],
-    ['h', '%', 'x'],
-    ['i', ' ', '#'],
-    ['s', 'M', ' '],
-    ['$', 'a', ' '],
-    ['#', 't', '%'],
-    ['i', 'r', '!']
-]
-decoded_string = decode_matrix(rows, columns, encoded_matrix)
-print(decoded_string)
+    result = decode(encoded_matrix)
+    print(result)
+
+main()
